@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../CartContext'; // Import the useCart hook
 
 const Header = () => {
-    // Assume you have a cart state that keeps track of the items in the cart
-    const cartItemsCount = 3; // For example, you have 3 items in the cart
+    const { cart } = useCart(); // Destructure cart from the useCart hook
+
+    // Calculate the total number of items in the cart
+    const cartItemsCount = cart.length;
 
     // State to manage the visibility of the flyout menu
     const [isMenuOpen, setIsMenuOpen] = useState(false);
