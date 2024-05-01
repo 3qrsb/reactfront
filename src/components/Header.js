@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../CartContext'; // Import the useCart hook
-import Search from './Search';
+import { Search as SearchIcon } from 'react-feather'; // Import the Search icon
 
-const Header = () => {
+const Header = ({ handleSearch }) => {
     const { cart } = useCart(); // Destructure cart from the useCart hook
-
-    // Calculate the total number of items in the cart
+    const [searchTerm, setSearchTerm] = useState('');
     const cartItemsCount = cart.length;
-
-    // State to manage the visibility of the flyout menu
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    // Handle search function
-    const handleSearch = (searchTerm) => {
-        console.log('Searching for:', searchTerm);
-        // Implement your search logic here
+    // Handle input change for the search bar
+    const handleInputChange = (e) => {
+        setSearchTerm(e.target.value);
+        handleSearch(e.target.value);
     };
 
     return (
@@ -25,9 +21,21 @@ const Header = () => {
                     <Link to="/" className="text-xl font-bold">
                         Home
                     </Link>
+                    <div className="flex items-center">
+                        <div className="flex items-center border border-gray-300 rounded-md px-3 py-1 bg-white">
+                            <SearchIcon className="text-gray-600" /> {/* Search icon */}
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                value={searchTerm}
+                                onChange={handleInputChange}
+                                className="bg-transparent ml-2 focus:outline-none rounded-md px-3 py-1 bg-white text-gray-800"
+                            />
+                        </div>
+                    </div>
                     <nav>
                         <ul className="flex space-x-4">
-                            <li>
+                            <li className="relative">
                                 <button
                                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                                     className="hover:underline focus:outline-none"
@@ -42,7 +50,6 @@ const Header = () => {
                                         <Link to="/products/tablets" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Tablets</Link>
                                         <Link to="/products/tv-audio-video" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">TV, Audio, Video</Link>
                                         <Link to="/products/accessories" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Accessories</Link>
-                                        {/* Add more categories as needed */}
                                     </div>
                                 )}
                             </li>
@@ -61,7 +68,6 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <Search handleSearch={handleSearch} />
                 </div>
             </div>
         </header>
