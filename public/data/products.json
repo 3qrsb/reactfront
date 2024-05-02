@@ -1,9 +1,11 @@
 [
     {
         "id": 1,
-        "name": "Product 1",
-        "price": 10,
-        "description": "Description of Product 1"
+        "name": "iPhone 12",
+        "description": "The latest iPhone.",
+        "price": 999,
+        "colors": ["blue", "white", "black", "purple"],
+        "capacities": [64, 128, 256]
     },
     {
         "id": 2,
