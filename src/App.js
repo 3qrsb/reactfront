@@ -6,6 +6,8 @@ import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import { CartProvider } from './CartContext';
 import AboutUs from './components/AboutUs';
+import Register from './components/Register';
+import Login from './components/Login';
 
 const App = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -24,6 +26,8 @@ const App = () => {
                         <Route path="/product/:id" element={<ProductDetail />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/about" element={<AboutUs />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
                     </Routes>
                 </div>
             </CartProvider>
