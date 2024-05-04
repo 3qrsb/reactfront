@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
@@ -6,7 +7,7 @@ const Login = () => {
         username: '',
         password: ''
     });
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -16,6 +17,7 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:4000/auth/login', formData);
             console.log(response.data);
+            navigate('/');
         } catch (error) {
             console.error('Error logging in:', error.message);
         }
@@ -62,6 +64,12 @@ const Login = () => {
                     >
                         Login
                     </button>
+                    <Link
+                        to="/register"
+                        className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                    >
+                        Don't have an account? Register
+                    </Link>
                 </div>
             </form>
         </div>

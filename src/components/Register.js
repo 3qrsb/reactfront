@@ -1,4 +1,5 @@
 import React, { Fragment,useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Dialog, Transition } from '@headlessui/react';
 
@@ -9,6 +10,7 @@ const Register = () => {
         password: ''
     });
     const [isOpen, setIsOpen] = useState(false);
+    //const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,6 +21,7 @@ const Register = () => {
         try {
             const response = await axios.post('http://localhost:4000/auth/register', formData);
             console.log(response.data);
+            //navigate('/login');
             setIsOpen(true); // Open dialog on successful registration
         } catch (error) {
             console.error('Error registering:', error.message);
@@ -81,6 +84,12 @@ const Register = () => {
                     >
                         Register
                     </button>
+                    <Link
+                        to="/login"
+                        className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                    >
+                        Already have an account? Login
+                    </Link>
                 </div>
             </form>
 
