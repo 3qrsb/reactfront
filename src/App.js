@@ -8,6 +8,7 @@ import { CartProvider } from './CartContext';
 import AboutUs from './components/AboutUs';
 import Register from './components/Register';
 import Login from './components/Login';
+import UserProfile from './components/UserProfile'; // Import UserProfile
 
 const App = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -28,6 +29,7 @@ const App = () => {
                         <Route path="/about" element={<AboutUs />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/profile" element={<UserProfile />} /> {/* Add UserProfile route */}
                     </Routes>
                 </div>
             </CartProvider>

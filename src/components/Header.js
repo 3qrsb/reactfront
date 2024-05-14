@@ -122,6 +122,9 @@ const Header = ({ handleSearch }) => {
                                 <Link to="/about" className="hover:underline">About Us</Link>
                             </li>
                             <li>
+                                <Link to="/profile" className="hover:underline">Profile</Link> {/* Add link to profile */}
+                            </li>
+                            <li>
                                 <Link to="/cart" className="relative">
                                     <ShoppingCart size={24} />
                                     {cartItemsCount > 0 && (
@@ -140,4 +143,3 @@ const Header = ({ handleSearch }) => {
 };
 
 export default Header;
-
